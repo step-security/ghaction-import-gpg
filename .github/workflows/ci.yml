@@ -1,0 +1,191 @@
+name: ci
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  schedule:
+    - cron: '0 10 * * *'
+  push:
+    branches:
+      - 'master'
+      - 'releases/v*'
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - 'master'
+      - 'releases/v*'
+
+jobs:
+  gpg:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: GPG conf
+        run: |
+          cat ~/.gnupg/gpg.conf || true
+
+  armored:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - test-key
+          - test-subkey
+        global:
+          - false
+          - true
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+        include:
+          - key: test-subkey
+            fingerprint: C17D11ADF199F12A30A0910F1F80449BE0B08CB8
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: GPG conf
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const gnupgfolder = `${require('os').homedir()}/.gnupg`;
+            if (!fs.existsSync(gnupgfolder)){
+                fs.mkdirSync(gnupgfolder);
+            }
+            fs.chmodSync(gnupgfolder, '0700');
+            fs.copyFile('__tests__/fixtures/gpg.conf', `${gnupgfolder}/gpg.conf`, (err) => {
+                if (err) throw err;
+            });
+      -
+        name: Get test key and passphrase
+        uses: actions/github-script@v6
+        id: test
+        with:
+          script: |
+            const fs = require('fs');
+            core.setOutput('pgp', fs.readFileSync('__tests__/fixtures/${{ matrix.key }}.pgp', {encoding: 'utf8'}));
+            core.setOutput('passphrase', fs.readFileSync('__tests__/fixtures/${{ matrix.key }}.pass', {encoding: 'utf8'}));
+      -
+        name: Import GPG
+        uses: ./
+        with:
+          gpg_private_key: ${{ steps.test.outputs.pgp }}
+          passphrase: ${{ steps.test.outputs.passphrase }}
+          trust_level: 5
+          git_config_global: ${{ matrix.global }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_tag_gpgsign: true
+          git_push_gpgsign: if-asked
+          fingerprint: ${{ matrix.fingerprint }}
+      -
+        name: List keys
+        run: |
+          gpg -K
+        shell: bash
+
+  base64:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - test-key
+          - test-subkey
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+        include:
+          - key: test-subkey
+            fingerprint: C17D11ADF199F12A30A0910F1F80449BE0B08CB8
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Get test key and passphrase
+        uses: actions/github-script@v6
+        id: test
+        with:
+          script: |
+            const fs = require('fs');
+            core.setOutput('pgp-base64', fs.readFileSync('__tests__/fixtures/${{ matrix.key }}-base64.pgp', {encoding: 'utf8'}));
+            core.setOutput('passphrase', fs.readFileSync('__tests__/fixtures/${{ matrix.key }}.pass', {encoding: 'utf8'}));
+      -
+        name: Import GPG
+        uses: ./
+        with:
+          gpg_private_key: ${{ steps.test.outputs.pgp-base64 }}
+          passphrase: ${{ steps.test.outputs.passphrase }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_tag_gpgsign: true
+          git_push_gpgsign: if-asked
+          fingerprint: ${{ matrix.fingerprint }}
+
+  trust:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - test-key
+        level:
+          - ''
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: GPG conf
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const gnupgfolder = `${require('os').homedir()}/.gnupg`;
+            if (!fs.existsSync(gnupgfolder)){
+                fs.mkdirSync(gnupgfolder);
+            }
+            fs.chmodSync(gnupgfolder, '0700');
+            fs.copyFile('__tests__/fixtures/gpg.conf', `${gnupgfolder}/gpg.conf`, (err) => {
+                if (err) throw err;
+            });
+      -
+        name: Get test key and passphrase
+        uses: actions/github-script@v6
+        id: test
+        with:
+          script: |
+            const fs = require('fs');
+            core.setOutput('pgp', fs.readFileSync('__tests__/fixtures/${{ matrix.key }}.pgp', {encoding: 'utf8'}));
+            core.setOutput('passphrase', fs.readFileSync('__tests__/fixtures/${{ matrix.key }}.pass', {encoding: 'utf8'}));
+      -
+        name: Import GPG
+        id: import_gpg
+        uses: ./
+        with:
+          gpg_private_key: ${{ steps.test.outputs.pgp }}
+          passphrase: ${{ steps.test.outputs.passphrase }}
+          trust_level: ${{ matrix.level }}
+      -
+        name: List trust values
+        run: |
+          gpg --export-ownertrust
+        shell: bash
