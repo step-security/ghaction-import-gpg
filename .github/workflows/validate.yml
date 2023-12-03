@@ -17,6 +17,11 @@ jobs:
     outputs:
       targets: ${{ steps.targets.outputs.matrix }}
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       -
         name: Checkout
         uses: actions/checkout@v4
@@ -35,6 +40,11 @@ jobs:
       matrix:
         target: ${{ fromJson(needs.prepare.outputs.targets) }}
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       -
         name: Checkout
         uses: actions/checkout@v4
