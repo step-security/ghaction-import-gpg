@@ -22,6 +22,11 @@ jobs:
   gpg:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       -
         name: GPG conf
         run: |
@@ -46,6 +51,11 @@ jobs:
           - key: test-subkey
             fingerprint: C17D11ADF199F12A30A0910F1F80449BE0B08CB8
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       -
         name: Checkout
         uses: actions/checkout@v4
@@ -107,6 +117,11 @@ jobs:
           - key: test-subkey
             fingerprint: C17D11ADF199F12A30A0910F1F80449BE0B08CB8
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       -
         name: Checkout
         uses: actions/checkout@v4
@@ -150,6 +165,11 @@ jobs:
           - macOS-latest
           - windows-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       -
         name: Checkout
         uses: actions/checkout@v4
