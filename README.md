@@ -73,7 +73,7 @@ jobs:
         uses: actions/checkout@v4
       -
         name: Import GPG key
-        uses: step-security/ghaction-import-gpg@v1
+        uses: step-security/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
@@ -100,7 +100,7 @@ jobs:
         uses: actions/checkout@v4
       -
         name: Import GPG key
-        uses: step-security/ghaction-import-gpg@v1
+        uses: step-security/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
@@ -136,7 +136,7 @@ jobs:
         uses: actions/checkout@v4
       -
         name: Import GPG key
-        uses: step-security/ghaction-import-gpg@v1
+        uses: step-security/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
@@ -187,7 +187,7 @@ jobs:
         uses: actions/checkout@v4
       -
         name: Import GPG key
-        uses: step-security/ghaction-import-gpg@v1
+        uses: step-security/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
