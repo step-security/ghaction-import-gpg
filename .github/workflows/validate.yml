@@ -24,7 +24,7 @@ jobs:
 
       -
         name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.0
       -
         name: Targets matrix
         id: targets
@@ -47,7 +47,7 @@ jobs:
 
       -
         name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.0
       -
         name: Validate
         uses: docker/bake-action@v4
