@@ -1,0 +1,15 @@
+[[IgnoredVulns]]
+id = "GHSA-c2qf-rxjj-qqgw"
+reason = "semver vulnerable function `range` not used"
+
+[[IgnoredVulns]]
+id = "GHSA-952p-6rrq-rcjv"
+reason = "It is a test dependency"
+
+[[IgnoredVulns]]
+id = "GHSA-78xj-cgh5-2h22"
+reason = "ip vulnerable function `isPublic()` not used"
+
+[[IgnoredVulns]]
+id = "GHSA-2p57-rm9w-gvfp"
+reason = "ip vulnerable function `isPublic()` not used"
