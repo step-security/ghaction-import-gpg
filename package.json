@@ -23,7 +23,6 @@
     "signing",
     "git"
   ],
-  "author": "CrazyMax",
   "license": "MIT",
   "packageManager": "yarn@3.6.3",
   "dependencies": {
