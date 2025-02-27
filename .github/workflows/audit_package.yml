@@ -1,0 +1,19 @@
+name: Yarn Audit Fix Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: "Specify a base branch"
+        required: false
+        default: "main"
+
+jobs:
+  audit-fix:
+    uses: step-security/reusable-workflows/.github/workflows/yarn_audit_fix.yml@v1
+    with:
+      base_branch: ${{ inputs.base_branch }}
+
+permissions:
+  contents: write
+  pull-requests: write
