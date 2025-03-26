@@ -11,6 +11,10 @@ on:
         description: "Specify package manager (npm or yarn)"
         required: false
         default: "yarn"
+      script:
+        description: "Specify script to execute"
+        required: false
+        default: "yarn build"
 
   schedule:
     - cron: "0 0 * * 1"
@@ -21,6 +25,7 @@ jobs:
     with:
       base_branch: ${{ github.event.inputs.base_branch || 'main' }}
       package_manager: "yarn"
+      script: ${{ github.event.inputs.script || 'yarn build' }}
 
 permissions:
   contents: write
