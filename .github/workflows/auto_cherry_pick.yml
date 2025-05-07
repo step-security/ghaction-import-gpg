@@ -15,6 +15,10 @@ on:
         description: "Specify package manager if available (npm or yarn)"
         required: false
         default: "yarn"
+      yarn_version:
+        required: false
+        type: string
+        default: "3.6.3"
       
 
 permissions:
@@ -32,3 +36,4 @@ jobs:
       base_branch: ${{ inputs.base_branch }}
       script: ${{ inputs.script }}
       package_manager: ${{ inputs.package_manager }}
+      yarn_version: '3.6.3'
