@@ -10,7 +10,7 @@ on:
       script:
         description: "Specify the npm/yarn script to run if available"
         required: false
-        default: "yarn build"
+        default: "yarn run all"
       package_manager:
         description: "Specify package manager if available (npm or yarn)"
         required: false
