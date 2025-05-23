@@ -32,7 +32,7 @@ jobs:
       -
         name: List targets
         id: generate
-        uses: docker/bake-action/subaction/list-targets@v6
+        uses: docker/bake-action/subaction/list-targets@212c36739681a6271d58dcfe0d001d2ad13f8e75 # v6.7.0
         with:
           target: validate
 
