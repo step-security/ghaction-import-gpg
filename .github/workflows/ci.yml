@@ -49,7 +49,7 @@ jobs:
           - true
         os:
           - ubuntu-latest
-          - macOS-latest
+          - macos-latest
           - windows-latest
         include:
           - key: test-subkey
@@ -115,7 +115,7 @@ jobs:
           - test-subkey
         os:
           - ubuntu-latest
-          - macOS-latest
+          - macos-latest
           - windows-latest
         include:
           - key: test-subkey
@@ -166,7 +166,7 @@ jobs:
           - 1
         os:
           - ubuntu-latest
-          - macOS-latest
+          - macos-latest
           - windows-latest
     steps:
       - name: Harden Runner
