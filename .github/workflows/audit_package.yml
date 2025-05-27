@@ -14,7 +14,7 @@ on:
       script:
         description: "Specify script to execute"
         required: false
-        default: "yarn build"
+        default: "yarn run all"
       yarn_version:
         required: false
         type: string
@@ -29,7 +29,7 @@ jobs:
     with:
       base_branch: ${{ github.event.inputs.base_branch || 'main' }}
       package_manager: "yarn"
-      script: ${{ github.event.inputs.script || 'yarn build' }}
+      script: ${{ github.event.inputs.script || 'yarn run all' }}
       yarn_version: '3.6.3'
 
 permissions:
