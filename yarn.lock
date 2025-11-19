@@ -1980,14 +1980,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.11.0":
-  version: 1.12.0
-  resolution: "axios@npm:1.12.0"
+"axios@npm:^1.13.2":
+  version: 1.13.2
+  resolution: "axios@npm:1.13.2"
   dependencies:
     follow-redirects: ^1.15.6
     form-data: ^4.0.4
     proxy-from-env: ^1.1.0
-  checksum: f2a109efea16711907ae86acc46434d52da28e889bf1d2fc2b66844e82c9908f6d96d988ad9043b37d4146abc182e67d61abd87367152bbbc1cd73afa3c5de71
+  checksum: 057d0204d5930e2969f0bccb9f0752745b1524a36994667833195e7e1a82f245d660752ba8517b2dbea17e9e4ed0479f10b80c5fe45edd0b5a0df645c0060386
   languageName: node
   linkType: hard
 
@@ -3498,7 +3498,7 @@ __metadata:
     "@typescript-eslint/parser": ^6.6.0
     "@vercel/ncc": ^0.38.0
     addressparser: ^1.0.1
-    axios: ^1.11.0
+    axios: ^1.13.2
     eslint: ^8.49.0
     eslint-config-prettier: ^9.0.0
     eslint-plugin-jest: ^27.2.3
