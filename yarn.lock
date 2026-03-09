@@ -930,22 +930,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@isaacs/balanced-match@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@isaacs/balanced-match@npm:4.0.1"
-  checksum: 102fbc6d2c0d5edf8f6dbf2b3feb21695a21bc850f11bc47c4f06aa83bd8884fde3fe9d6d797d619901d96865fdcb4569ac2a54c937992c48885c5e3d9967fe8
-  languageName: node
-  linkType: hard
-
-"@isaacs/brace-expansion@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "@isaacs/brace-expansion@npm:5.0.1"
-  dependencies:
-    "@isaacs/balanced-match": ^4.0.1
-  checksum: 21f8192f022c320f7acf899730feb419b1a5f4ccc741481ef8f4b3111e97a41c06e5783871bb240da2e87de909c7fc5b0d07f73818db521fee06541c086ea351
-  languageName: node
-  linkType: hard
-
 "@isaacs/fs-minipass@npm:^4.0.0":
   version: 4.0.1
   resolution: "@isaacs/fs-minipass@npm:4.0.1"
@@ -1841,14 +1825,14 @@ __metadata:
   linkType: hard
 
 "ajv@npm:^6.12.4":
-  version: 6.12.6
-  resolution: "ajv@npm:6.12.6"
+  version: 6.14.0
+  resolution: "ajv@npm:6.14.0"
   dependencies:
     fast-deep-equal: ^3.1.1
     fast-json-stable-stringify: ^2.0.0
     json-schema-traverse: ^0.4.1
     uri-js: ^4.2.2
-  checksum: 874972efe5c4202ab0a68379481fbd3d1b5d0a7bd6d3cc21d40d3536ebff3352a2a1fabb632d4fd2cc7fe4cbdcd5ed6782084c9bbf7f32a1536d18f9da5007d4
+  checksum: 7bb3ea97bb8af52521589079f427e799b6561acaa94f50e13410cb87588c51df8db1afe1157b3e48f1a829269adaa11116e0c2cafe2b998add1523789809a3c5
   languageName: node
   linkType: hard
 
@@ -2047,6 +2031,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"balanced-match@npm:^4.0.2":
+  version: 4.0.4
+  resolution: "balanced-match@npm:4.0.4"
+  checksum: fb07bb66a0959c2843fc055838047e2a95ccebb837c519614afb067ebfdf2fa967ca8d712c35ced07f2cd26fc6f07964230b094891315ad74f11eba3d53178a0
+  languageName: node
+  linkType: hard
+
 "big-integer@npm:^1.6.44":
   version: 1.6.51
   resolution: "big-integer@npm:1.6.51"
@@ -2055,9 +2046,9 @@ __metadata:
   linkType: hard
 
 "bn.js@npm:^4.0.0":
-  version: 4.11.9
-  resolution: "bn.js@npm:4.11.9"
-  checksum: 59b67623585ca568f81bc0a00b215cd09ab75cbf632c73fcbe6a19c207ea7a510684e61becad6cdfcc678f716792f49de5a70fc057465e4e5e79f13d81291171
+  version: 4.12.3
+  resolution: "bn.js@npm:4.12.3"
+  checksum: 0fb6455c6d56e3869589ad736cc2f5ed2b6229daa1af43e93bd373eb5e20bf0ae25b166087189bce9ba3b3f4d971e1b9a12ec6027e52eb182e5535e1494cadbb
   languageName: node
   linkType: hard
 
@@ -2077,6 +2068,15 @@ __metadata:
     balanced-match: ^1.0.0
     concat-map: 0.0.1
   checksum: 12cb6d6310629e3048cadb003e1aca4d8c9bb5c67c3c321bafdd7e7a50155de081f78ea3e0ed92ecc75a9015e784f301efc8132383132f4f7904ad1ac529c562
+  languageName: node
+  linkType: hard
+
+"brace-expansion@npm:^5.0.2":
+  version: 5.0.4
+  resolution: "brace-expansion@npm:5.0.4"
+  dependencies:
+    balanced-match: ^4.0.2
+  checksum: ded86c0f0b138734110d67437fee52c1f97bc19175644788b1d71afec2d87d405cf05424ce428f88ae3abe8e09e13ee55f2675534b38076ef70e1e583ed75686
   languageName: node
   linkType: hard
 
@@ -4388,11 +4388,11 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^10.1.2":
-  version: 10.1.2
-  resolution: "minimatch@npm:10.1.2"
+  version: 10.2.3
+  resolution: "minimatch@npm:10.2.3"
   dependencies:
-    "@isaacs/brace-expansion": ^5.0.1
-  checksum: a6ad8bb522741fdf6aca0545054057a2a540d7c76c4f6ab0f34694e5de9616c5487dbab26b6ae564437636863d4d5cb3609fa0d8408b6e56312d7a3eb5e22e05
+    brace-expansion: ^5.0.2
+  checksum: 896a87685c0d376e7679e99c37072f92eeb0df003d63cd422e8fc48ea727108d9f722531a0a8d23fe7d776faccaca424d5765e7af3b0c5e1dfb73fabcc60f612
   languageName: node
   linkType: hard
 
@@ -5294,15 +5294,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.5.4":
-  version: 7.5.7
-  resolution: "tar@npm:7.5.7"
+  version: 7.5.10
+  resolution: "tar@npm:7.5.10"
   dependencies:
     "@isaacs/fs-minipass": ^4.0.0
     chownr: ^3.0.0
     minipass: ^7.1.2
     minizlib: ^3.1.0
     yallist: ^5.0.0
-  checksum: 82fa04804b6cae4c0b46b84e97a08c39e1c17bb959350baa32d139bcf5e1fc7ebc3ceb72465dd3e2e311992386ecc13599a257d5672158490ceb9464146d5573
+  checksum: aed1a7ae188fc80539184682bfaed7c4d5ae276f591dce67cc03b4ed8898aebde0cc195187f6abd455e3f25b24399a809ed2eaf6410ca3abc1ba30b19a94089e
   languageName: node
   linkType: hard
 
