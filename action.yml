@@ -1,6 +1,7 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
 name: 'Import GPG'
 description: 'GitHub Action to easily import a GPG key'
+author: 'step-security'
 branding:
   color: 'yellow'
   icon: 'lock'
