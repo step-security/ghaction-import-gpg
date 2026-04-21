@@ -20,7 +20,7 @@
     "signing",
     "git"
   ],
-  "author": "step-security"
+  "author": "step-security",
   "license": "MIT",
   "packageManager": "yarn@4.12.0",
   "dependencies": {
