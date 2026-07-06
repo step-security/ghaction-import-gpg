@@ -1,0 +1,18 @@
+{
+   "schema_version": "1",
+   "onboarding_type": "copied",
+   "archived": false,
+   "maintained_action_name": "step-security/ghaction-import-gpg",
+   "upstream_full_repo_name": "crazy-max/ghaction-import-gpg",
+   "action_type": "node",
+   "last_release": {
+     "tag_name": "v7.0.0",
+     "created_at": "2026-04-21T11:18:09Z",
+     "published_at": "2026-04-21T16:45:10Z"
+   },
+   "sync": {
+     "ignore_presets": [
+       "defaults_v1"
+     ]
+   }
+ }
