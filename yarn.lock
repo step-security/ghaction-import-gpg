@@ -873,7 +873,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.11.0":
+"axios@npm:^1.20.0":
   version: 1.20.0
   resolution: "axios@npm:1.20.0"
   dependencies:
@@ -1676,7 +1676,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:^4.0.18"
     "@vitest/eslint-plugin": "npm:^1.6.9"
     addressparser: "npm:^1.0.1"
-    axios: "npm:^1.11.0"
+    axios: "npm:^1.20.0"
     eslint: "npm:^9.39.3"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-prettier: "npm:^5.5.5"
@@ -2912,6 +2912,8 @@ __metadata:
       optional: true
     jsdom:
       optional: true
+    vite:
+      optional: false
   bin:
     vitest: ./vitest.mjs
   checksum: 10/7dbd6c7b423c25a5f367497970de975ed100db073afe281ef06ac8a3ee1fdb0907813375a77896db4379c17efaf947b3c87eafeb321ce59cc978a638b5d97a31
